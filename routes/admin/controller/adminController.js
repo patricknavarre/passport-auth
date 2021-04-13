@@ -104,7 +104,7 @@ const updateUserProfile = async (req, res) => {
           errorMessage: error.message,
         });
       }
-      console.log(updatedUser);
+    //   console.log(updatedUser);
 };
 
 const deleteUserProfile = async (req, res) => {
@@ -121,7 +121,7 @@ const deleteUserProfile = async (req, res) => {
           errorMessage: error.message,
         });
       }
-      console.log(deletedUser);
+    //   console.log(deletedUser);
 };
 
 const createUserProfile = async (req, res) => {

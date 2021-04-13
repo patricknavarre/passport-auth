@@ -17,10 +17,16 @@ router.get("/get-all-users-profile",
 passport.authenticate("admin-auth", { session: false }),
 getAllUsersProfile)
 
-router.put("/update-user-profile", updateUserProfile);
+router.put("/update-user-profile", 
+passport.authenticate("admin-auth", { session: false }),
+updateUserProfile);
 
-router.delete("/delete-user-profile", deleteUserProfile);
+router.delete("/delete-user-profile", 
+passport.authenticate("admin-auth", { session: false }),
+deleteUserProfile);
 
-router.post("/create-user-profile", createUserProfile);
+router.post("/create-user-profile", 
+passport.authenticate("admin-auth", { session: false }),
+createUserProfile);
 
 module.exports = router;
