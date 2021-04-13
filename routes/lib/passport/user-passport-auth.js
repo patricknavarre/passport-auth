@@ -7,10 +7,11 @@ const keys = process.env.JWT_SECRET_STRING;
 const jwtOpts = {};
 jwtOpts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
 jwtOpts.secretOrKey = keys;
+
 const userJWTLoginStrategy = new JwtStrategy(jwtOpts, async (payload, done) => {
   const userEmail = payload.email;
   console.log(payload);
-  console.log("===== 13");
+  console.log("===== 14");
   console.log(userEmail);
   try {
     const user = await User.findOne({ email: userEmail }).select("-password");

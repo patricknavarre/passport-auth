@@ -7,6 +7,8 @@ var mongoose = require("mongoose");
 var cors = require("cors");
 
 require("dotenv").config();
+
+// passport MUST be above the user and admin JWT
 var passport = require("passport")
 var userJWTLoginStrategy = require("./routes/lib/passport/user-passport-auth");
 var adminJWTLoginStrategy = require('./routes/lib/passport/admin-passport-auth');
