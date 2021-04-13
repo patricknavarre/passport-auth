@@ -2,7 +2,7 @@ var express = require("express");
 var router = express.Router();
 var passport = require("passport");
 
-var { signUp, login, updateProfile, getAllUsersProfile, updateUserProfile} = require("./controller/adminController");
+var { signUp, login, updateProfile, getAllUsersProfile, updateUserProfile, deleteUserProfile, createUserProfile } = require("./controller/adminController");
 
 router.post("/sign-up", signUp);
 router.post("/login", login);
@@ -18,5 +18,9 @@ passport.authenticate("admin-auth", { session: false }),
 getAllUsersProfile)
 
 router.put("/update-user-profile", updateUserProfile);
+
+router.delete("/delete-user-profile", deleteUserProfile);
+
+router.post("/create-user-profile", createUserProfile);
 
 module.exports = router;

@@ -104,6 +104,46 @@ const updateUserProfile = async (req, res) => {
           errorMessage: error.message,
         });
       }
+      console.log(updatedUser);
+};
+
+const deleteUserProfile = async (req, res) => {
+    try {
+        let deletedUser = await User.findOneAndDelete({ email: req.body.email });
+  
+        res.status(200).json({
+          message: "successfully deleted",
+          deletedUser: deletedUser,
+        });
+      } catch (error) {
+        res.status(500).json({
+          message: "error",
+          errorMessage: error.message,
+        });
+      }
+      console.log(deletedUser);
+};
+
+const createUserProfile = async (req, res) => {
+    try {
+        let genSalt = await bcrypt.genSalt(12);
+        let hashedPassword = await bcrypt.hash(req.body.password, genSalt);
+    
+        let createdUser = new User({
+          email: req.body.email,
+          username: req.body.username,
+          password: hashedPassword,
+        });
+    
+        let savedCreatedUser = await createdUser.save();
+    
+        res.json({
+          message: "User has been created!",
+          user: savedCreatedUser,
+        });
+      } catch (e) {
+        res.status(500).json({ message: e.message });
+      }
 }
 
 module.exports = {
@@ -112,4 +152,6 @@ module.exports = {
   updateProfile,
   getAllUsersProfile,
   updateUserProfile,
+  deleteUserProfile,
+  createUserProfile,
 };
